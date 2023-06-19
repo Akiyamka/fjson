@@ -17,7 +17,26 @@ type FJSON = {
   fileds: Field[];
 };
 
-type Field = TextField;
+type Field =
+  | CheckboxField
+  | ColorFiled
+  | CustomFiled
+  | DateFiled
+  | EmailField
+  | FileField
+  | ImageField
+  | MonthField
+  | NumberField
+  | PasswordField
+  | RadioField
+  | RangeField
+  | TelField
+  | TextField
+  | TextAreaField
+  | ToggleField
+  | TimeField
+  | SelectField
+  | UrlField;
 type Validator = (value: unknown) => boolean;
 
 interface CommonFiled {
@@ -138,6 +157,14 @@ interface TextField extends CommonFiled {
   };
 }
 
+interface TextAreaField extends CommonFiled {
+  type: 'text_area';
+  validations?: {
+    minLength?: ValidatorSettings<number>;
+    maxLenght?: ValidatorSettings<number>;
+  };
+}
+
 interface ToggleField extends CommonFiled {
   type: 'toggle';
 }
@@ -152,6 +179,19 @@ interface TimeField extends CommonFiled {
 
 interface UrlField extends CommonFiled {
   type: 'url';
+  validations?: {
+    minLength?: ValidatorSettings<number>;
+    maxLenght?: ValidatorSettings<number>;
+  };
+}
+
+interface SelectField extends CommonFiled {
+  type: 'select';
+  options: Array<{
+    name: string;
+    label: string;
+  }>;
+  multiselect?: boolean; // default: false
   validations?: {
     minLength?: ValidatorSettings<number>;
     maxLenght?: ValidatorSettings<number>;
