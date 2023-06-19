@@ -22,8 +22,8 @@ interface CommonFiled {
   type: string;
   label: string;
   name: string;
-  validations?: Record<string, ValidatorSettings>
-  title?: string;
+  validations?: Record<string, ValidatorSettings<unknown>>
+  description?: string;
   placeholder?: string;
   required?: boolean; // default: false
   disabled?: boolean; // default: false
