@@ -7,7 +7,7 @@ The standard describing the html form in json format is useful for communication
 This also makes it easier to create frameworks for forms
 
 ## Limitations
-- This standard describes most of [input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) defined in the [html specification](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute), except `button` 'search`, `reset`, `submit`, and `hidden` but with additional `toogle` type. Also, it is acceptable to use the `custom` type for extend json with your own input types
+- This standard describes most of [input types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types) defined in the [html specification](https://html.spec.whatwg.org/multipage/input.html#states-of-the-type-attribute), except `button`, `search`, `reset`, `submit`, and `hidden` but with additional `toogle` type. Also, it is acceptable to use the `custom` type for extend json with your own input types
 
 
 ```ts
