@@ -23,7 +23,7 @@ interface CommonFiled {
   label: string;
   name: string;
   validations?: Record<string, ValidatorSettings>
-  tip?: string;
+  title?: string;
   placeholder?: string;
   required?: boolean; // default: false
   disabled?: boolean; // default: false
