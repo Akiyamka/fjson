@@ -22,8 +22,8 @@ type Validator = (value: unknown) => boolean;
 
 interface CommonFiled {
   type: string;
-  label: string;
   name: string;
+  label?: string;
   validations?: Record<string, ValidatorSettings<unknown>>;
   title?: string;
   placeholder?: string;
