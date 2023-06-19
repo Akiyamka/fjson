@@ -22,7 +22,7 @@ interface CommonFiled {
   type: string;
   label: string;
   name: string;
-  validations?: Record<string, string | number | ValidatorSettings>
+  validations?: Record<string, ValidatorSettings>
   tip?: string;
   placeholder?: string;
   required?: boolean; // default: false
@@ -30,8 +30,8 @@ interface CommonFiled {
   readOnly?: boolean; // default: false
 }
 
-interface ValidatorSettings {
-  arguments: Array<string | number>;
+interface ValidatorSettings<T> {
+  arguments: Array<T>;
   errorMessage: string; 
 }
 
@@ -49,18 +49,36 @@ interface CustomFiled extends CommonFiled {
 
 interface DateFiled extends CommonFiled {
   type: 'date';
+  validations: {
+    min: ValidatorSettings<number>;
+    max: ValidatorSettings<number>;
+  }
 }
 
 interface EmailField extends CommonFiled {
   type: 'email';
+  validations: {
+    minLength: ValidatorSettings<number>;
+    maxLenght: ValidatorSettings<number>;
+  }
 }
 
 interface FileField extends CommonFiled {
   type: 'file';
+   validations?: {
+     maxSizeKb: ValidatorSettings<number>,
+     allowedFormats: ValidatorSettings<string>,
+     maxFiles: ValidatorSettings<number>,
+   }
 }
 
 interface ImageField extends CommonFiled {
   type: 'image';
+   validations?: {
+     maxSizeKb: ValidatorSettings<number>,
+     allowedFormats: ValidatorSettings<string>,
+     maxFiles: ValidatorSettings<number>,
+   }
 }
 
 interface MonthField extends CommonFiled {
@@ -69,27 +87,53 @@ interface MonthField extends CommonFiled {
 
 interface NumberField extends CommonFiled {
   type: 'number';
+  validations?: {
+     min: ValidatorSettings<number>,
+     max: ValidatorSettings<number>,
+  }
 }
 
 interface PasswordField extends CommonFiled {
   type: 'password';
+  validations: {
+    minLength: ValidatorSettings<number>;
+    maxLenght: ValidatorSettings<number>;
+    haveSymbols: ValidatorSettings<boolean>;
+    haveCapitalLetters: ValidatorSettings<boolean>;
+    haveNumbers: ValidatorSettings<boolean>; 
+  }
 }
 
 interface RadioField extends CommonFiled {
   type: 'radio';
+  options: Array<{
+    name: string;
+    label: string;
+  }>
 }
 
 interface RangeField extends CommonFiled {
   type: 'range';
-  validations
+  validations?: {
+     min: ValidatorSettings<number>,
+     max: ValidatorSettings<number>,
+  }
 }
 
 interface TelField extends CommonFiled {
-  type: 'number';
+  type: 'tel';
+  validations?: {
+    minLength: ValidatorSettings<number>;
+    maxLenght: ValidatorSettings<number>;
+  }
 }
 
 interface TextField extends CommonFiled {
   type: 'text';
+  validations?: {
+    minLength: ValidatorSettings<number>;
+    maxLenght: ValidatorSettings<number>;
+  }
 }
 
 interface ToggleField extends CommonFiled {
@@ -98,10 +142,18 @@ interface ToggleField extends CommonFiled {
 
 interface TimeField extends CommonFiled {
   type: 'time';
+  validations?: {
+     min: ValidatorSettings<number>,
+     max: ValidatorSettings<number>,
+  }
 }
 
 interface UrlField extends CommonFiled {
   type: 'url';
+  validations?: {
+    minLength: ValidatorSettings<number>;
+    maxLenght: ValidatorSettings<number>;
+  }
 }
 
 ```
