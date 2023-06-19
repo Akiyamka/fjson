@@ -1,6 +1,6 @@
 FJSON Specification
 ----
-Json based format for descriibing basic html forms
+Json based format for descriibing simple html forms
 
 ## Motivation
 The standard describing the html form in json format is useful for communication between the backend and frontend.
